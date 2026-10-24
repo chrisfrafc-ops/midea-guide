@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="el"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Midea MIH350D157K0: κινούμενος οδηγός</title>
+<style>
+:root{--bg:#eef1f3;--fg:#14212b;--mut:#51606b;--card:#fff;--panel:#1b1f23;--ink:#d9dee2;--acc:#d9362f;--led:#ff4a3d;--line:#d0d8de;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1519;--fg:#e8eef2;--mut:#9fb0bb;--card:#192229;--line:#2c3942}}
+html,body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 "Segoe UI",Roboto,Arial,sans-serif}
+main{max-width:720px;margin:0 auto;padding:20px 16px 40px}
+h1{font-size:1.5rem;margin:0 0 14px}
+.panel{background:var(--panel);border-radius:12px;padding:10px}
+svg{display:block;width:100%;height:auto}
+.b{fill:none;stroke:var(--ink);stroke-width:1.5;opacity:.75}
+.t{fill:var(--ink);font:9px sans-serif;text-anchor:middle;opacity:.8}
+.d{fill:var(--led);font:bold 20px "Courier New",monospace;text-anchor:middle}
+.on .b{stroke:var(--acc);stroke-width:3;opacity:1;animation:p 1s ease-in-out infinite}
+.on .t{fill:#fff;opacity:1}
+#thumb{fill:var(--acc);transition:cx .9s ease}
+@keyframes p{50%{stroke-opacity:.35}}
+@media (prefers-reduced-motion:reduce){.on .b{animation:none}#thumb{transition:none}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-top:14px;min-height:7.2em}
+.card h2{font-size:1.1rem;margin:0 0 6px}
+.card p{margin:0}
+.bar{height:5px;background:var(--line);border-radius:3px;margin-top:14px;overflow:hidden}
+#fill{height:100%;background:var(--acc);width:0;transition:width .3s}
+.ctl{display:flex;gap:8px;margin-top:12px}
+button{flex:1;font:inherit;padding:11px 8px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:8px;cursor:pointer}
+button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+#play{background:var(--acc);color:#fff;border-color:var(--acc)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.top h1{margin:0}.lg{display:flex;gap:6px}.lg button{flex:none;padding:6px 12px}.lg button[aria-pressed="true"]{background:var(--acc);color:#fff;border-color:var(--acc)}
+</style></head><body><main>
+<div class="top"><h1 id="title">Midea MIH350D157K0: πώς λειτουργεί</h1><div class="lg"><button id="el" aria-pressed="true">EL</button><button id="en" aria-pressed="false">EN</button></div></div>
+<div class="panel"><svg viewBox="0 0 360 140" role="img" aria-label="Σχηματικός πίνακας ελέγχου της εστίας">
+<g id="pause"><rect class="b" x="12" y="18" width="30" height="30" rx="5"/><text class="t" x="27" y="37">Pause</text></g>
+<g id="zone"><rect class="b" x="50" y="18" width="30" height="30" rx="5"/><text class="t" x="65" y="37">Ζώνη</text></g>
+<g id="dA"><rect class="b" x="90" y="14" width="46" height="38" rx="4"/><text class="d" id="vA" x="113" y="40">8 8</text></g>
+<g id="minus"><rect class="b" x="146" y="18" width="24" height="30" rx="5"/><text class="t" x="158" y="37">−</text></g>
+<g id="dT"><rect class="b" x="174" y="14" width="46" height="38" rx="4"/><text class="d" id="vT" x="197" y="40">8 8</text></g>
+<g id="plus"><rect class="b" x="224" y="18" width="24" height="30" rx="5"/><text class="t" x="236" y="37">+</text></g>
+<g id="boost"><rect class="b" x="256" y="18" width="28" height="30" rx="5"/><text class="t" x="270" y="37">Boost</text></g>
+<g id="lock"><rect class="b" x="290" y="18" width="28" height="30" rx="5"/><text class="t" x="304" y="37">Κλείδ.</text></g>
+<g id="power"><rect class="b" x="324" y="18" width="28" height="30" rx="5"/><text class="t" x="338" y="37">ON/OFF</text></g>
+<g id="slider"><rect class="b" x="14" y="78" width="334" height="36" rx="18"/><text class="t" x="34" y="100">0</text><text class="t" x="328" y="100">9</text><line x1="56" y1="96" x2="306" y2="96" stroke="#9aa5ad" stroke-width="2"/><circle id="thumb" cx="56" cy="96" r="9"/></g>
+</svg></div>
+<div class="card" aria-live="polite"><h2 id="h"></h2><p id="p"></p></div>
+<div class="bar"><div id="fill"></div></div>
+<div class="ctl"><button id="prev">Προηγούμενο</button><button id="play">Παύση</button><button id="next">Επόμενο</button></div>
+</main>
+<script>
+var S=[
+{t:"1. Βάλε σκεύος",d:"Τοποθέτησε στο κέντρο μιας ζώνης ένα σκεύος που κολλάει μαγνήτης. Η βάση πρέπει να είναι στεγνή και επίπεδη.",h:[],a:"8 8",c:"8 8",x:56},
+{t:"2. Άναψε την εστία",d:"Κράτα πατημένο το ON/OFF για 1 δευτερόλεπτο. Θα ακουστεί ένα μπιπ και οι οθόνες θα δείξουν «–».",h:["power"],a:"– –",c:"– –",x:56},
+{t:"3. Διάλεξε ζώνη",d:"Πάτα το κουμπί της ζώνης που θέλεις. Η ένδειξή της αρχίζει να αναβοσβήνει.",h:["zone","dA"],a:"0 0",c:"– –",x:56},
+{t:"4. Ρύθμισε την ισχύ",d:"Σύρε το δάχτυλο στο slider από το 1 ως το 9. Αριστερά είναι η χαμηλή ισχύς και δεξιά η υψηλή. Έχεις 1 λεπτό, αλλιώς η εστία κλείνει.",h:["slider","dA"],a:"0 6",c:"– –",x:206},
+{t:"5. Χρονόμετρο",d:"Με επιλεγμένη ζώνη, πάτα − ή + για να βάλεις λεπτά. Κάθε πάτημα είναι 1 λεπτό και αν κρατήσεις πατημένο, 10 λεπτά. Όταν τελειώσει ο χρόνος, η ζώνη σβήνει μόνη της.",h:["dT","minus","plus"],a:"0 6",c:"1 0",x:206},
+{t:"6. Boost",d:"Πάτα Boost για μέγιστη ισχύ (θα δεις «P»). Μετά από 5 λεπτά επιστρέφει στην προηγούμενη ρύθμιση.",h:["boost","dA"],a:"P",c:"– –",x:306},
+{t:"7. Κλείδωμα",d:"Πάτα το κλείδωμα για να μη χτυπήσει κάποιο κουμπί κατά λάθος (θα δεις «Lo»). Για να ξεκλειδώσεις, κράτα πατημένο το ίδιο κουμπί.",h:["lock","dT"],a:"0 6",c:"Lo",x:206},
+{t:"8. Σβήσιμο",d:"Σύρε το slider στο 0, ή πάτα ON/OFF για να σβήσουν όλες οι ζώνες. Το «H» σημαίνει ότι η ζώνη είναι ακόμα ζεστή.",h:["slider","power","dA"],a:"H",c:"– –",x:56}
+];
+var EN=[
+{t:"1. Place a pan",d:"Put an induction-compatible pan (a magnet must stick to it) in the centre of a zone. The base must be dry and flat."},
+{t:"2. Turn the hob on",d:"Hold the ON/OFF control for 1 second. You will hear a beep and the displays will show “–”."},
+{t:"3. Choose a zone",d:"Touch the zone selection control for the zone you want. Its display starts to flash."},
+{t:"4. Set the power",d:"Slide your finger along the slider from 1 to 9. Left is low power, right is high power. You have 1 minute, otherwise the hob switches off."},
+{t:"5. Timer",d:"With a zone selected, touch − or + to set minutes. One touch is 1 minute, and holding it changes by 10 minutes. When the time is up, the zone switches off by itself."},
+{t:"6. Boost",d:"Touch Boost for maximum power (the display shows “P”). After 5 minutes it returns to the previous setting."},
+{t:"7. Key lock",d:"Touch the lock so no button is pressed by accident (the display shows “Lo”). To unlock, touch and hold the same control."},
+{t:"8. Switch off",d:"Slide the slider to 0, or touch ON/OFF to switch off all zones. “H” means the zone is still hot."}
+];
+var UI={el:{title:"Midea MIH350D157K0: πώς λειτουργεί",prev:"Προηγούμενο",next:"Επόμενο",pause:"Παύση",play:"Αναπαραγωγή",zone:"Ζώνη",lock:"Κλείδ."},en:{title:"Midea MIH350D157K0: how it works",prev:"Previous",next:"Next",pause:"Pause",play:"Play",zone:"Zone",lock:"Lock"}};
+var lang="el";
+function lab(){var u=UI[lang];document.documentElement.lang=lang;document.title=u.title;$("title").textContent=u.title;$("prev").textContent=u.prev;$("next").textContent=u.next;$("play").textContent=playing?u.pause:u.play;document.querySelector("#zone .t").textContent=u.zone;document.querySelector("#lock .t").textContent=u.lock;$("el").setAttribute("aria-pressed",lang==="el");$("en").setAttribute("aria-pressed",lang==="en")}
+function setLang(l){lang=l;lab();show(i)}
+var i=0,timer=null,playing=true;
+function $(id){return document.getElementById(id)}
+function show(n){
+  i=(n+S.length)%S.length;var s=S[i];
+  document.querySelectorAll("svg g").forEach(function(g){g.classList.remove("on")});
+  s.h.forEach(function(id){$(id).classList.add("on")});
+  $("vA").textContent=s.a;$("vT").textContent=s.c;$("thumb").setAttribute("cx",s.x);
+  var o=lang==="en"?EN[i]:s;$("h").textContent=o.t;$("p").textContent=o.d;
+  $("fill").style.width=((i+1)/S.length*100)+"%";
+}
+function tick(){clearTimeout(timer);if(playing)timer=setTimeout(function(){show(i+1);tick()},5500)}
+$("next").onclick=function(){show(i+1);tick()};
+$("prev").onclick=function(){show(i-1);tick()};
+$("play").onclick=function(){playing=!playing;lab();tick()};$("el").onclick=function(){setLang("el")};$("en").onclick=function(){setLang("en")};
+lab();show(0);tick();
+</script></body></html>
